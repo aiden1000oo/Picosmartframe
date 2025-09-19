@@ -29,11 +29,8 @@ jobs:
 
     - name: Clone Pico SDK
       run: |
-          git clone -b master https://github.com/raspberrypi/pico-sdk.git pico-sdk
-          cd pico-sdk
-          git submodule update --init
+          git clone --depth 1 --recurse-submodules https://github.com/raspberrypi/pico-sdk.git
           echo "PICO_SDK_PATH=$GITHUB_WORKSPACE/pico-sdk" >> $GITHUB_ENV
-
     - name: Build Firmware
       run: |
         mkdir -p build
