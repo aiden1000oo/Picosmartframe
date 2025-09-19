@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.13)
-include(pico_sdk_import.cmake)
+include("${PICO_SDK_PATH}/pico_sdk_import.cmake")
 
 project(pico_smart_display C CXX ASM)
 pico_sdk_init()
