@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Install Dependencies via APT
       run: |
@@ -42,7 +42,7 @@ jobs:
         make -j$(nproc)
 
     - name: Upload UF2 Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: pico_smart_display.uf2
         path: build/pico_smart_display.uf2
