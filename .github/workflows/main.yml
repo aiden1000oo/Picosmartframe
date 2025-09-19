@@ -27,12 +27,12 @@ jobs:
           gdb-arm-none-eabi \
           make
 
-    - name: Install Pico SDK
+    - name: Clone Pico SDK
       run: |
-        git clone -b master https://github.com/raspberrypi/pico-sdk.git
-        cd pico-sdk
-        git submodule update --init
-        echo "PICO_SDK_PATH=$(pwd)" >> $GITHUB_ENV
+          git clone -b master https://github.com/raspberrypi/pico-sdk.git pico-sdk
+          cd pico-sdk
+          git submodule update --init
+          echo "PICO_SDK_PATH=$GITHUB_WORKSPACE/pico-sdk" >> $GITHUB_ENV
 
     - name: Build Firmware
       run: |
