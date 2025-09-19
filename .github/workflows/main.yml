@@ -1,0 +1,48 @@
+name: Build Pico Smart Display
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Install Dependencies via APT
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          cmake \
+          build-essential \
+          git \
+          python3 \
+          python3-pip \
+          libnewlib-arm-none-eabi \
+          gcc-arm-none-eabi \
+          gdb-arm-none-eabi \
+          make
+
+    - name: Install Pico SDK
+      run: |
+        git clone -b master https://github.com/raspberrypi/pico-sdk.git
+        cd pico-sdk
+        git submodule update --init
+        echo "PICO_SDK_PATH=$(pwd)" >> $GITHUB_ENV
+
+    - name: Build Firmware
+      run: |
+        mkdir -p build
+        cd build
+        cmake -DPICO_SDK_PATH=$PICO_SDK_PATH ..
+        make -j$(nproc)
+
+    - name: Upload UF2 Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: pico_smart_display.uf2
+        path: build/pico_smart_display.uf2
