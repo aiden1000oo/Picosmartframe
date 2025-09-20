@@ -24,10 +24,10 @@ jobs:
 
       - name: Clone Pico SDK with submodules
         run: |
-          if [ ! -d "pico-sdk" ]; then
-              git clone --recurse-submodules -b master https://github.com/raspberrypi/pico-sdk.git
+          if [ ! -d "${GITHUB_WORKSPACE}/pico-sdk" ]; then
+              git clone --recurse-submodules -b master https://github.com/raspberrypi/pico-sdk.git "${GITHUB_WORKSPACE}/pico-sdk"
           else
-              cd pico-sdk
+              cd "${GITHUB_WORKSPACE}/pico-sdk"
               git pull
               git submodule update --init --recursive
           fi
@@ -36,7 +36,7 @@ jobs:
         run: |
           mkdir -p build
           cd build
-          cmake -DPICO_SDK_PATH=../pico-sdk ..
+          cmake -DPICO_SDK_PATH=${GITHUB_WORKSPACE}/pico-sdk ..
           make -j$(nproc)
 
       - name: Upload artifacts
@@ -44,4 +44,5 @@ jobs:
         with:
           name: pico_smart_display
           path: |
+              build/pico_smart_display.elf
               build/pico_smart_display.uf2
