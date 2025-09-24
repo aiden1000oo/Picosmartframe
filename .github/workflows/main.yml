@@ -24,18 +24,13 @@ jobs:
 
       - name: Clone Pico SDK with submodules
         run: |
-          if [ ! -d "${GITHUB_WORKSPACE}/pico-sdk" ]; then
-              git clone --recurse-submodules -b master https://github.com/raspberrypi/pico-sdk.git "${GITHUB_WORKSPACE}/pico-sdk"
-          else
-              cd "${GITHUB_WORKSPACE}/pico-sdk"
-              git pull
-              git submodule update --init --recursive
-          fi
+          git clone --recurse-submodules -b master https://github.com/raspberrypi/pico-sdk.git "${GITHUB_WORKSPACE}/pico-sdk"
 
       - name: Build firmware
         run: |
           mkdir -p build
           cd build
+          git clone --recurse-submodules -b master https://github.com/raspberrypi/pico-sdk.git "./pico-sdk"
           cmake -DPICO_SDK_PATH=${GITHUB_WORKSPACE}/pico-sdk ..
           make -j$(nproc)
 
