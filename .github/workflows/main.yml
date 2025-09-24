@@ -31,7 +31,7 @@ jobs:
           mkdir -p build
           cd build
           git clone --recurse-submodules -b master https://github.com/raspberrypi/pico-sdk.git "./pico-sdk"
-          cmake -DPICO_SDK_PATH=${GITHUB_WORKSPACE}/pico-sdk ..
+          cmake -DPICO_SDK_PATH=./pico-sdk ..
           make -j$(nproc)
 
       - name: Upload artifacts
