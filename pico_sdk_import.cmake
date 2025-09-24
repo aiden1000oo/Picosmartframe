@@ -19,6 +19,3 @@ endif()
 if(NOT EXISTS "${PICO_SDK_PATH}/CMakeLists.txt")
     message(FATAL_ERROR "Pico SDK not found at ${PICO_SDK_PATH}")
 endif()
-
-# Import the SDK folder itself
-add_subdirectory(${PICO_SDK_PATH} ${CMAKE_BINARY_DIR}/pico-sdk)
