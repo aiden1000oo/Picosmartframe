@@ -6,7 +6,7 @@ if(NOT DEFINED PICO_SDK_PATH)
 endif()
 
 # Validate Pico SDK exists
-if(NOT EXISTS "${PICO_SDK_PATH}/pico_sdk_wrapper.cmake")
+if(NOT EXISTS "${PICO_SDK_PATH}/pico_sdk_import.cmake")
     message(FATAL_ERROR "Pico SDK not found at ${PICO_SDK_PATH}. Clone it with submodules or set PICO_SDK_PATH.")
 endif()
 
