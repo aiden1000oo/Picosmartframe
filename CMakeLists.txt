@@ -15,6 +15,11 @@ file(GLOB_RECURSE SOURCES "src/*.c")
 
 add_executable(pico_smart_display ${SOURCES})
 
+
+target_include_directories(pico_smart_display PRIVATE
+    ${CMAKE_CURRENT_LIST_DIR}/src
+)
+
 target_link_libraries(pico_smart_display
     pico_stdlib
     tinyusb_board
