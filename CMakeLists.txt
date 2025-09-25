@@ -11,7 +11,7 @@ project(PicoSmartFrame C CXX ASM)
 pico_sdk_init()
 
 # Collect all source files
-file(GLOB_RECURSE SOURCES "src/*.c")
+file(GLOB_RECURSE SOURCES "*.c" "src/*.c")
 
 add_executable(pico_smart_display ${SOURCES})
 
