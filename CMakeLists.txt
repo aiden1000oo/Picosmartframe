@@ -17,6 +17,7 @@ add_executable(pico_smart_display ${SOURCES})
 
 target_link_libraries(pico_smart_display
     pico_stdlib
+    tinyusb_board
     tinyusb_device
 )
 
