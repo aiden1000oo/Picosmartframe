@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.13)
 
-include(pico_sdk_import.cmake)
-
-pico_sdk_init()
+include(./pico_sdk_import.cmake)
 
 project(PicoSmartFrame C CXX ASM)
+
+pico_sdk_init()
 
 # Collect all source files
 file(GLOB_RECURSE SOURCES "src/*.c")
