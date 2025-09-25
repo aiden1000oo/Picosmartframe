@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.13)
 
-include(pico_sdk_import.cmake)
+# Set the path to the pico-sdk submodule (edit if needed)
+set(PICO_SDK_PATH "${CMAKE_CURRENT_LIST_DIR}/pico-sdk")
+
+# Pull in the SDK (must be before project())
+include(${PICO_SDK_PATH}/pico_sdk_init.cmake)
 
 project(PicoSmartFrame C CXX ASM)
 
