@@ -1,6 +1,7 @@
 #ifndef FAT32_H
 #define FAT32_H
 #include <stdint.h>
+#include <stddef.h>
 
 #define FAT32_IMAGE_SIZE (1024*1024)
 
