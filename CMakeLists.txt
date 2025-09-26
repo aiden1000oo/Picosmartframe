@@ -8,6 +8,10 @@ include(${PICO_SDK_PATH}/pico_sdk_init.cmake)
 
 project(PicoSmartFrame C CXX ASM)
 
+set(PICO_BLUETOOTH 0)
+set(PICO_ENABLE_BLUETOOTH 0)
+set(PICO_ENABLE_BTSTACK 0)
+
 pico_sdk_init()
 
 # Collect all source files
@@ -27,3 +31,4 @@ target_link_libraries(pico_smart_display
 )
 
 pico_add_extra_outputs(pico_smart_display)
+
