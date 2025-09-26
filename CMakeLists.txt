@@ -23,6 +23,7 @@ add_executable(pico_smart_display
 
 target_include_directories(pico_smart_display PRIVATE
     ${PICO_SDK_PATH}/src/rp2_common/hardware_rtc/include
+    ./src
 )
 
 target_link_libraries(pico_smart_display
