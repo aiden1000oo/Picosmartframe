@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
-#define FAT32_IMAGE_SIZE (1024*1024)
+#define FAT32_IMAGE_SIZE (924*924)
 
 void fat32_init(uint8_t *disk_image);
 void fat32_place_file(uint8_t *disk_image,const char *filename,uint8_t *data,size_t len);
