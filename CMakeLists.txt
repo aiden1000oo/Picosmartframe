@@ -15,7 +15,7 @@ set(PICO_ENABLE_BTSTACK 0)
 pico_sdk_init()
 
 # Collect all source files
-file(GLOB_RECURSE SOURCES "*.c" "src/*.c")
+file(GLOB_RECURSE SOURCES "display_utils.c" "fat32.c" "main.c" "tiny_jpeg.c" "src/*.c")
 
 add_executable(pico_smart_display ${SOURCES})
 
@@ -31,4 +31,5 @@ target_link_libraries(pico_smart_display
 )
 
 pico_add_extra_outputs(pico_smart_display)
+
 
